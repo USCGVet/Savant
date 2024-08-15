@@ -23,6 +23,35 @@ header {
 }
 
 
+
+/* Nav link styles in the header */
+header nav a {
+    color: #0f0; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Font size */
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    padding: 5px 0; /* Add padding to create space */
+  }
+  
+  header nav a img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  header nav a:hover {
+    color:  #fff; /* Hover color */
+  }
+  
+  header nav a:hover img {
+    opacity: 0.7; /* Image hover effect */
+  }
+
+
+
 .laser-dot {
     position: fixed;
     width: 10px;
@@ -299,6 +328,20 @@ header {
     animation: buttonPulse 0.3s;
 }
 
+.header-nav-right {
+    position: relative;
+    padding: 10px 20px;
+    /*background-color: rgba(0, 40, 0, 0.7);*/
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+    letter-spacing: 1px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.1s ease;
+    
+}
 
 .toggle-container {
     display: flex;
@@ -359,8 +402,9 @@ header {
 
 .toggle-text {
     margin-left: 10px;
+    margin-right: 30px;
 }
-
+  
 
 main {
     margin-top: 20px;
