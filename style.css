@@ -4,15 +4,12 @@
 }
 
 body {
+    background-color: #000000;
+    color: #00ff00;
     font-family: 'Courier New', monospace;
-    background-color: #000;
-    color: #0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    cursor: none;  /* Hide the default cursor */
+    line-height: 1.5;
+    position: relative;
+    overflow: hidden;
 }
 
 header {
@@ -380,19 +377,56 @@ main {
     height: 100%;
     pointer-events: none;
     z-index: -1;
-    background: 
-        linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,20,0,0.9) 100%),
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 20px,
-            rgba(0, 255, 0, 0.1) 20px,
-            rgba(0, 255, 0, 0.1) 40px
-        );
-    animation: matrix-animation 20s linear infinite;
+    background: linear-gradient(0deg, rgba(0,0,0,0.97) 0%, rgba(0,10,0,0.98) 100%);
 }
 
-@keyframes matrix-animation {
-    from { background-position: 0 0; }
-    to { background-position: 0 1000px; }
+
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right,
+        transparent 0%,
+        rgba(0, 255, 0, 0.2) 10%,
+        rgba(0, 255, 0, 0.5) 50%,
+        rgba(0, 255, 0, 0.2) 90%,
+        transparent 100%);
+    opacity: 0.1;
+    animation: scanline 10s linear infinite;
+}
+
+.crt-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center,
+        rgba(0, 10, 0, 0) 0%,
+        rgba(0, 10, 0, 0.1) 90%,
+        rgba(0, 10, 0, 0.2) 100%);
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Add a subtle text shadow for the glow effect */
+* {
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Adjust existing styles */
+.savant-title,
+.tab-button,
+.metamask-button {
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
 }
