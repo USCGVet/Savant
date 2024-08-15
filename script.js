@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
    
     // Set initial position
-    let buttonX = window.innerWidth - button.offsetWidth - 20; // 20px from right edge
+    let buttonX = window.innerWidth - button.offsetWidth - 210; // 180px from right edge
     let buttonY = 20; // 20px from top
 
     function updateButtonPosition() {
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             updateCursorStyle(false);
 
             // Reset button to initial position when turned off
-            buttonX = window.innerWidth - button.offsetWidth - 20;
+            buttonX = window.innerWidth - button.offsetWidth - 210;
             buttonY = 20;
             updateButtonPosition();
 
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Handle window resizing
     window.addEventListener('resize', () => {
         if (!isChasing) {
-            buttonX = window.innerWidth - button.offsetWidth - 20;
+            buttonX = window.innerWidth - button.offsetWidth - 210;
             buttonY = 20;
             updateButtonPosition();
         } else {
