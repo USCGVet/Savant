@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const toggle = document.getElementById('buttonChaseToggle');
     const button = document.getElementById('metamaskButton');
     const beam = document.querySelector('.beam');
+    document.body.style.cursor = 'none';
 
      // Create the laser dot element
      const laserDot = document.createElement('div');
@@ -58,8 +59,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     
  
-     // Update laser dot position
-     
+     // Update laser dot position     
      document.addEventListener('mousemove', (e) => {
         if (isChasing) {
             laserDot.style.left = `${e.clientX}px`;
@@ -68,21 +68,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
      });
      
 
-     // Hide laser dot when mouse leaves the window
+     // Hide laser dot when mouse leaves the window     
      document.addEventListener('mouseout', () => {
         if (isChasing) {
             laserDot.classList.add('hidden');
         }
      });
- 
-     // Show laser dot when mouse enters the window
+    
+
+     // Show laser dot when mouse enters the window     
      document.addEventListener('mouseover', () => {
         if (isChasing) {
             laserDot.classList.remove('hidden');
         }
      });
- 
-  
+    
+
+     function updateCursorStyle(hide) {
+        if (hide) {
+            document.documentElement.style.cursor = 'none !important';
+            document.body.style.cursor = 'none !important';
+        } else {
+            document.documentElement.style.cursor = 'default';
+            document.body.style.cursor = 'default';
+        }
+    }
+
+    // Set initial cursor state
+    updateCursorStyle(isChasing);
+
 
      toggle.addEventListener('change', (e) => {
         isChasing = e.target.checked;
@@ -90,6 +104,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             // Disable laser dot and show normal cursor
             laserDot.classList.add('hidden');
             document.body.style.cursor = 'default';
+
+            updateCursorStyle(false);
 
             // Reset button to initial position when turned off
             buttonX = window.innerWidth - button.offsetWidth - 20;
@@ -105,12 +121,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
             laserDot.classList.remove('hidden');
             document.body.style.cursor = 'none';
 
+            updateCursorStyle(true);
+
             // Restart beam animation
             changeBeamAnimation();
             // Teleport button to a new position
             teleportButton();
         }
     });
+
+   
 
     document.addEventListener('mousemove', (e) => {
         if (!isChasing) return;
