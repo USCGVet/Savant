@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Savant - A PulseChain PRC-20 Token</title>
+    <title>Savant - Trade in HXR for Savant</title>
     <link rel="stylesheet" href="style.css?v=1">
     <link rel="icon" href="favicon.ico?v=1" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -24,10 +24,10 @@
     <div class="matrix-bg"></div>
     
     <header>
-        <div class="logo-container"  id="addTokenButton">
+        <div class="logo-container" id="addTokenButton">
             <div class="beam"></div>
             <div class="logo-placeholder">
-                <img src="https://uscgvet.github.io/Savant/Savant.png" alt="Savant Logo">
+                <img src="Savant.png" alt="Savant Logo">
             </div>
         </div>
         <h1 class="savant-title">Savant</h1>
@@ -50,7 +50,8 @@
             <div id="accountInfo"></div>  
             <div id="networkInfo"></div>
             <div id="savantBalance"></div>
-            <div id="hexBalance"></div>           
+            <div id="hexBalance"></div>   
+            <div id="hxrBalance"></div>        
         </div>
 
         <nav class="header-nav-right">
@@ -76,13 +77,36 @@
     </nav>
     <main>
         <div id="mainContent" style="display: none;">
-            <h2 id="stakeList-Title">HEX Stakes</h2>
-            <table id="stakeList" class="display" style="width:100%">
-                <!-- DataTable will populate this -->
-            </table>
-            <h2>Remaining Seats per Tier</h2>
-            <div id="remainingSeats"></div>
+            <h2 id="stakeList-Title" class="savant-title">Trade in HexRewards for Savant</h2>
+            
+            <div class="trade-explainer">
+                <h3>How to Trade HXR for Savant</h3>
+                <ol>
+                    <li><strong>Approve Spending:</strong> Enter the amount of HXR you want to trade and approve the transaction in your wallet.</li>
+                    <li><strong>Confirm Deposit:</strong> After approval, confirm the deposit to complete the trade.</li>
+                </ol>
+                <p>Note: You'll need to confirm two separate transactions in your wallet to complete this process.</p>
+            </div>
+        
+            <div id="tradeForm" class="savant-form">
+                <div id="step1" class="trade-step active">
+                    <h3>Step 1: Approve HXR Spend</h3>
+                    <div class="input-group">
+                        <input type="number" id="hxrAmount" placeholder="Enter HXR amount" class="savant-input">
+                        <span class="input-suffix">HXR</span>
+                    </div>
+                    <button id="approveButton" class="savant-button">Approve HXR Spend</button>
+                    <div id="approvalStatus" class="status-message"></div>
+                </div>
+                <div id="step2" class="trade-step">
+                    <h3>Step 2: Confirm Trade-In of HXR to Savant</h3>
+                    <p id="amountToDeposit" class="amount-display"></p>
+                    <button id="confirmDepositButton" class="savant-button">Confirm Trade-In</button>
+                    <div id="depositStatus" class="status-message"></div>
+                </div>
+            </div>
         </div>
+        
 
         <p id="dogBrain">Unleash your dog brain.</p>
     </main>
@@ -91,8 +115,9 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="script.js?v=0.05"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="datatable-script.js"></script>
-    <script src="scriptWork.js"></script>
+    <script src="tradeWork.js?v=0.05"></script>
+    
+    
     
 </body>
 </html>

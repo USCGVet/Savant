@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savant - A PulseChain PRC-20 Token</title>
+    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="icon" href="favicon.ico?v=1" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Updated Google Fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="datatable-style.css">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <header>
+        <div class="logo-container">
+            <div class="beam"></div>
+            <div class="logo-placeholder">
+                <img src="Savant.png" alt="Savant Logo">
+            </div>
+        </div>
+        <h1 class="savant-title">Savant</h1>
+        
+        <div class="metamask-container">
+            <button id="metamaskButton" type="button" class="metamask-button">
+                <span class="button-text">Savant</span>
+                <div class="button-glow"></div>
+            </button>
+            <div class="toggle-container">
+                <input type="checkbox" id="buttonChaseToggle" class="toggle-input">
+                <label for="buttonChaseToggle" class="toggle-label">
+                    <span class="toggle-button"></span>
+                    <span class="toggle-text">Toggle Chase</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="header-right" id="connectAddr" style="display: none;">
+            <div id="accountInfo"></div>  
+            <div id="networkInfo"></div>
+            <div id="savantBalance"></div>
+            <div id="hexBalance"></div>           
+        </div>
+
+        <nav class="header-nav-right">
+                <!-- Twitter Link -->
+                <a href="https://twitter.com/uscgvet5555" >
+                    <img src="logo-white.png" alt="Twitter"> Twitter
+                </a>
+                <!-- Telegram Link -->
+                <a href="https://t.me/USCG_Vet_Chat" >
+                    <img src="logo-nobackground-1000.png" alt="Telegram"> Telegram
+                </a>
+        </nav>
+        
+    </header>
+    <nav class="tab-container">
+        <a href="index.html" class="tab-button">home</a>
+        <a href="whitepaper.html" class="tab-button">white paper</a>
+        <a href="#" class="tab-button">stake Hex</a>
+        <a href="#" class="tab-button">stake report</a>
+        <a href="trade.html" class="tab-button">trade-in HXR for Savant</a>
+        <a href="https://uscgvet.github.io/Savant" class="tab-button">Savant</a>
+        <a href="https://hex.com/" class="tab-button">Hex</a>
+    </nav>
+    <main>
+        <div id="mainContent" >
+            <div >
+                <h1>Savant white paper</h1>
+                
+                <!-- Paste your white paper content here -->
+            <div class="whitepaper">
+                <h2>A Rewarding Experience for Hex Stakers</h2>
+            
+                <h2>Introduction (NOTE: this white paper is a work in progress.)</h2>
+                <p>
+                    Savant is an innovative smart contract designed to provide additional 
+                    incentives for Hex stakers. By leveraging the power of the Hex staking system, 
+                    Savant offers a unique opportunity for users to earn additional rewards 
+                    based on their staking length of time. This white paper will explore the key 
+                    features and benefits of the Savant contract, providing a comprehensive 
+                    overview for potential users.
+                </p>
+            
+                <h2>Registering - (Stake Claiming) - "New" Stakes Only</h2>
+                <h3>2.0 Hex Stakes less than 1000 Hex in size are not able to Register nor Claim</h3>
+                <p>
+                    Hex Stakes that are smaller than 1000 Hex will not be able to Register nor Claim to mint Savant tokens.
+                    You will be able to mint HXR from the legacy HexRewards contract and Trade-In those tokens for Savant. 
+                </p>
+                <h3>2.1 Stake ID Protection</h3>
+                <p>
+                    To ensure the integrity of the rewarding system, Savant implements 
+                    a stake ID protection mechanism. "New" stakes with a stakeID greater than 
+                    the STAKEID_PROTECTION value (819820) [and 1000 Hex or larger] are eligible for claiming rewards 
+                    only after "Registering". This protection helps prevent abuse and ensures 
+                    that the supply of the token doesn't grow infinitly. "Old" active stakes 
+                    that have a stakeID lower than or equal to 819820 are eligible for 
+                    claiming rewards without the need of "Registering" first.
+                </p>
+            
+                <h3>2.2 Stake Tiers</h3>
+                <p>
+                    Savant introduces a tiered system based on the amount of Hex staked for 
+                    "New" stakes with a stake ID after the STAKEID_PROTECTION value (819820). 
+                    There are nine tiers, each with a maximum number of stakes allowed 
+                    (MAX_STAKES_PER_TIER = 369). The 9 tiers also have a Hex Stake Size requirement.
+                    Users can claim their stake by clicking on the 
+                    "Register" button on the site which then calls the claimStake function in 
+                    the contract, providing their stake index. The contract will determine the 
+                    appropriate tier based on the Hex staked amount and register the stake accordingly 
+                    consuming one of the available seats or slots of that tier. Once a tier has 
+                    been consumed, where all the seats are "Registered" for that tier, then no 
+                    more stakes can be "Registered" for that tier.
+                </p>
+            
+                <h2>Reward Calculation</h2>
+                <h3>3.1 Reward Per Day</h3>
+                <p>
+                    The contract defines a constant REWARD_PER_DAY = 0.00001 Savant, which represents 
+                    the base reward amount earned per day of staking. The actual reward earned 
+                    depends on the duration of the stake and whether it is a 5555-day stake or not.
+                </p>
+            
+                <h3>3.2 5555-Day Stakes</h3>
+                <p>
+                    For active stakes with a duration of 5555 days (MAX_STAKE_DAYS), the reward per day 
+                    is multiplied by a factor of 10. If the 5555 day stake has finished all 5555 
+                    days. Then the normal reward per day for Savant is multiplied by 
+                    a factor of 100 when "Claimed".
+                </p>
+            
+                <h3>3.3 Stakes Fewer Than 5555 Days</h3>
+                <p>
+                    For stakes with a duration less than 5555 days, the reward per day remains unchanged 
+                    if the stake is still active. If the stake has finished all days for the stake then the reward per day of Savant is multiplied by a factor of 10 
+                    when "Claimed".
+                </p>
+            
+                <h2>Reward Claiming</h2>
+                <h3>4.1 Claiming Rewards</h3>
+                <p>
+                    Users can claim their rewards by calling the claimReward function at any time while the stake is 
+                    active. The contract checks if the stake is eligible for rewards and calculates the reward amount 
+                    based on the consumed days and stake duration. The reward is then minted to the user's address, 
+                    and the claimed amount is recorded in the claimed mapping.
+            
+                    If the user ends the stake on the Hex website, or calls the "Emergency End Stake" function, 
+                    the Savant contract will not be able to find that Hex stake anymore and will not be able to 
+                    reward that Hex stake any Savant tokens.
+                </p>           
+                
+            
+                <h3>4.2 Returning Rewards</h3>
+                <p>
+                    The Return function in the Savant contract allows users to return their previously claimed rewards in exchange for  
+                    higher rewards at a later date. By returning the claimed rewards along with an additional fee, users can re-activate their stake 
+                    and accumulate more Savant tokens based on the extended time their stake has been active. This feature provides flexibility, enabling users 
+                    to optimize their reward strategy based on their stake progress and investment goals.  
+                    The fee is calculated by looking at the amount you claimed, then it multiplies that number times 1.3
+                    which adds an additional 30% on top.  
+                </p>
+                <!-- Example of Returning Rewards for a Standard Stake -->
+                <div class="example">
+                    <h2>Example:</h2>
+                    <h3>Returning Rewards for a Standard Non-5555 Day Stake</h3>
+                    <p><strong>Stake Duration:</strong> 1000 days</p>
+                    <h4>Initial Claim</h4>
+                    <p>You claim rewards at day 100 of your 1000-day stake, receiving 0.001 Savant calculated as follows:</p>
+                    <ul>
+                        <li><strong>Calculation:</strong> 100 days consumed of stake × 0.00001 Savant/day = 0.001 Savant</li>
+                    </ul>
+                    <h4>Return the same day that you claimed:</h4>
+                    <p>You decide to return the claim on the same day you claimed, you return 0.0013 Savant:</p>
+                    <ul>
+                        <li><strong>Calculation:</strong> (100 days consumed of stake) × 0.00001 Savant/day = 0.001 Savant + (30% of 0.001 Savant) = 0.0013 Savant</li>
+                        <li><strong>Return Amount:</strong> 0.001 Savant + (30% of 0.001 Savant) = 0.0013 Savant</li>
+                    </ul>
+                    
+                </div>
+                
+                <h2>Final Claim</h2>
+                <h3>5.1 Final Claim </h3>
+                    <p>Upon completing the full 1000-day stake:                         
+                        Then the final claim reward is calculated as a 10x bonus:</p>
+                    <ul>
+                        <li><strong>Calculation:</strong> (1000 days consumed × 0.00001 Savant/day) × 10 = 0.1 Savant</li>            
+                    </ul>
+            
+                <h2>Continuous Interaction</h2>
+                <h3>6.1 Continuous Interaction</h3>
+                    <p>Flexibility: The "Claim", "Return", and "Claim" cycle can be repeated an unlimited number of times 
+                        for the same stake, as long as it is active (not ended), allowing you to optimize your reward strategy
+                        based on stake progress and changes in your investment approach.</p>
+               
+                <h2>Conclusion</h2>
+                <p>
+                    Savant offers an exciting opportunity for Hex stakers to earn additional rewards based on their staking activity. With its tiered system, stake protection, and flexible reward calculation, Savant aims to incentivize long-term staking and provide a rewarding experience for users. By leveraging the power of smart contracts and the Hex staking system, Savant seeks to enhance the value proposition for Hex stakers and contribute to the growth and adoption of the Hex ecosystem.
+                </p>
+            
+            </div>
+            
+        </div>
+
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="script.js?v=0.05"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    
+    
+    
+</body>
+</html>

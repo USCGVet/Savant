@@ -328,6 +328,12 @@ header nav a {
     animation: buttonPulse 0.3s;
 }
 
+.header-right {
+    display: relative;
+    align-items: center;
+    padding: 10px 20px;
+}
+
 .header-nav-right {
     position: relative;
     padding: 10px 20px;
@@ -405,6 +411,177 @@ header nav a {
     margin-right: 30px;
 }
   
+
+.trade-step {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.trade-step.active {
+    display: block;
+    opacity: 1;
+}
+
+.glow-button {
+    background-color: rgba(0, 40, 0, 0.7);
+    border: 2px solid #0f0;
+    color: #0f0;
+    padding: 10px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+    background-color: rgba(0, 60, 0, 0.9);
+    box-shadow: 0 0 10px #0f0;
+}
+
+.status-message {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.trade-explainer {
+    background-color: rgba(0, 40, 0, 0.7);
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.trade-explainer h3 {
+    color: #0f0;
+    margin-top: 0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.trade-explainer ol {
+    padding-left: 20px;
+}
+
+.trade-explainer li {
+    margin-bottom: 10px;
+}
+
+.trade-explainer p {
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.savant-form {
+    background-color: rgba(0, 20, 0, 0.8);
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.trade-step {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.trade-step.active {
+    display: block;
+    opacity: 1;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%; /* Ensure the input group takes full width */
+}
+
+.savant-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    background-color: rgba(0, 40, 0, 0.7);
+    border: 2px solid #0f0;
+    color: #0f0;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+.savant-input:focus {
+    box-shadow: 0 0 10px #0f0;
+}
+
+.input-suffix {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0f0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.savant-button {
+    background-color: rgba(0, 60, 0, 0.8);
+    border: 2px solid #0f0;
+    color: #0f0;
+    padding: 10px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+.savant-button:hover {
+    background-color: rgba(0, 100, 0, 0.9);
+    box-shadow: 0 0 15px #0f0;
+}
+
+.status-message {
+    margin-top: 15px;
+    font-style: italic;
+    color: #0f0;
+    text-align: center;
+}
+
+.amount-display {
+    font-size: 1.2em;
+    color: #0f0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.glow-button {
+    background-color: rgba(0, 40, 0, 0.7);
+    border: 2px solid #0f0;
+    color: #0f0;
+    padding: 10px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+    background-color: rgba(0, 60, 0, 0.9);
+    box-shadow: 0 0 10px #0f0;
+}
+
+.status-message {
+    margin-top: 10px;
+    font-style: italic;
+}
 
 main {
     margin-top: 20px;
