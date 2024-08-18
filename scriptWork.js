@@ -115,12 +115,12 @@ async function getNetwork() {
     const networkId = await web3.eth.net.getId();
     let networkName;
     switch(networkId) {
-        case 1: networkName = "Ethereum Mainnet"; break;
+        case '1n': networkName = "Ethereum Mainnet"; break;
         case 3: networkName = "Ropsten Testnet"; break;
         case 4: networkName = "Rinkeby Testnet"; break;
         case 5: networkName = "Goerli Testnet"; break;
-        case 369: networkName = 'PulseChain Mainnet'; break;  
-        case 943: networkName = 'PulseChain Testnet v4'; break;  
+        case '369n': networkName = 'PulseChain Mainnet'; break;  
+        case '943n': networkName = 'PulseChain Testnet v4'; break;  
             
         default: networkName = "Unknown";
     }
