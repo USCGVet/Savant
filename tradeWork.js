@@ -89,12 +89,15 @@ function truncateAddress(address) {
 async function getNetwork() {
     const networkId = await web3.eth.net.getId();
     let networkName;
-    switch(networkId) {
+    switch(Number(networkId)) {
         case 1: networkName = "Ethereum Mainnet"; break;
         case 3: networkName = "Ropsten Testnet"; break;
         case 4: networkName = "Rinkeby Testnet"; break;
         case 5: networkName = "Goerli Testnet"; break;
-        default: networkName = "Hardhat Dev";
+        case 369: networkName = 'PulseChain Mainnet'; break;  
+        case 943: networkName = 'PulseChain Testnet v4'; break;  
+            
+        default: networkName = "Unknown";
     }
     document.getElementById('networkInfo').innerHTML = `Network: ${networkName}`;
 }
